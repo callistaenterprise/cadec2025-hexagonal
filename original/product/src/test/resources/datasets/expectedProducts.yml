@@ -1,0 +1,9 @@
+product:
+  - article_id: product1
+    name: Product 1
+  - article_id: product2
+    name: Product 2
+  - article_id: product2
+    name: Product 2
+  - article_id: newProduct
+    name: New Product

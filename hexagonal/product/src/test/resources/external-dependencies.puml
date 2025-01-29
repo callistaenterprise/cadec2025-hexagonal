@@ -1,0 +1,6 @@
+@startuml
+[Adapter] <<..adapter..>> as adapter
+[Application] <<..application..>> as application
+
+adapter --> application
+@enduml

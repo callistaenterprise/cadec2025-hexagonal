@@ -1,0 +1,9 @@
+@startuml
+[Port] <<..port..>> as port
+[Service] <<..service..>> as service
+[Domain] <<..domain..>> as domain
+
+port --> domain
+service --> port
+service --> domain
+@enduml

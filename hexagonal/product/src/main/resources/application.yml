@@ -1,0 +1,24 @@
+server:
+  port: 8080
+spring:
+  activemq:
+    broker-url: tcp://localhost:61616
+    packages:
+      trust-all: true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/product
+    username: admin
+    password: secret
+  jpa:
+    hibernate:
+      ddl-auto: none
+    open-in-view: false
+  liquibase:
+    enabled: true
+    changeLog: classpath:db/changelog/db.changelog.yml
+  threads.virtual.enabled: true
+
+inventory:
+  url: http://localhost:9080/inventory/
+  session:
+    max: 1000
