@@ -1,6 +1,6 @@
 package se.callista.cadec2023.product.services;
 
-import se.callista.workshop.karate.inventory.model.InventoryValue;
+import se.callista.cadec2023.inventory.model.InventoryValue;
 
 public interface InventoryService {
 

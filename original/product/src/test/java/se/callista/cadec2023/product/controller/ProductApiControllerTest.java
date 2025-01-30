@@ -35,7 +35,7 @@ class ProductApiControllerTest {
 
     given(productService.getProduct(product.getArticleId())).willReturn(product);
 
-    mvc.perform(MockMvcRequestBuilders.get("/products/" + product.getProductId()))
+    mvc.perform(MockMvcRequestBuilders.get("/products/" + product.getArticleId()))
         .andExpect(status().isOk())
         .andExpect(jsonPath("$.name", is(product.getName())));
 

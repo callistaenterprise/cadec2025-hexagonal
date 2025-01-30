@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
 import se.callista.cadec2025.product.application.port.out.inventory.ForManagingInventory;
 import se.callista.cadec2025.product.application.domain.Inventory;
-import se.callista.workshop.karate.inventory.model.InventoryValue;
+import se.callista.cadec2023.inventory.model.InventoryValue;
 
 @Component
 public class InventoryManagementAdapter implements ForManagingInventory {

@@ -4,7 +4,7 @@ import java.util.concurrent.Semaphore;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestClient;
-import se.callista.workshop.karate.inventory.model.InventoryValue;
+import se.callista.cadec2023.inventory.model.InventoryValue;
 
 @Component
 public class InventoryServiceImpl implements InventoryService {

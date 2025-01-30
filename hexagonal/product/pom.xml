@@ -31,7 +31,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>se.callista.workshop.karate</groupId>
+      <groupId>se.callista.cadec2023</groupId>
       <artifactId>inventory-api</artifactId>
       <version>1.0.0</version>
     </dependency>

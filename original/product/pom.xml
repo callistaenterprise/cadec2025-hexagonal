@@ -2,7 +2,7 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>se.callista.cadec2025</groupId>
+  <groupId>se.callista.cadec2023</groupId>
   <artifactId>product</artifactId>
   <version>1.0.0</version>
   <packaging>jar</packaging>
@@ -14,6 +14,7 @@
     <lombok.version>1.18.36</lombok.version>
     <maven.compiler.version>3.11.0</maven.compiler.version>
     <maven.surefire.version>3.2.2</maven.surefire.version>
+    <maven.failsafe.version>3.2.2</maven.failsafe.version>
   </properties>
 
   <dependencyManagement>
@@ -30,7 +31,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>se.callista.workshop.karate</groupId>
+      <groupId>se.callista.cadec2023</groupId>
       <artifactId>inventory-api</artifactId>
       <version>1.0.0</version>
     </dependency>
@@ -146,6 +147,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven.surefire.version}</version>
         <configuration>
           <includes>
             <include>**/*.class</include>
@@ -156,6 +158,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
+        <version>${maven.failsafe.version}</version>
         <configuration>
           <includes>
             <include>**/*.class</include>
@@ -166,121 +169,9 @@
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <version>${spring-boot.version}</version>
       </plugin>
     </plugins>
   </build>
-
-  <profiles>
-    <profile>
-      <id>local</id>
-      <dependencies>
-        <dependency>
-          <groupId>se.callista.workshop.karate</groupId>
-          <artifactId>localhost-test-pki</artifactId>
-          <version>1.0.0</version>
-        </dependency>
-      </dependencies>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-maven-plugin</artifactId>
-            <configuration>
-              <profiles>
-                <profile>local</profile>
-              </profiles>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-    <profile>
-      <id>docker</id>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>exec-maven-plugin</artifactId>
-            <version>3.1.0</version>
-            <executions>
-              <execution>
-                <id>docker-build</id>
-                <phase>package</phase>
-                <goals>
-                  <goal>exec</goal>
-                </goals>
-              </execution>
-            </executions>
-            <configuration>
-              <executable>docker</executable>
-              <workingDirectory>${project.basedir}</workingDirectory>
-              <arguments>
-                <argument>build</argument>
-                <argument>-t</argument>
-                <argument>${project.artifactId}:${project.version}</argument>
-                <argument>.</argument>
-                <argument>-f</argument>
-                <argument>src/docker/Dockerfile</argument>
-              </arguments>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-    <profile>
-      <id>perf</id>
-      <dependencies>
-        <dependency>
-          <groupId>com.intuit.karate</groupId>
-          <artifactId>karate-gatling</artifactId>
-          <version>${karate.version}</version>
-          <scope>test</scope>
-        </dependency>
-      </dependencies>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <version>${maven.surefire.version}</version>
-            <configuration>
-              <skip>true</skip>
-            </configuration>
-          </plugin>
-          <plugin>
-            <groupId>net.alchim31.maven</groupId>
-            <artifactId>scala-maven-plugin</artifactId>
-            <version>4.8.1</version>
-            <executions>
-              <execution>
-                <goals>
-                  <goal>testCompile</goal>
-                </goals>
-                <configuration>
-                  <excludes>
-                    <exclude>java</exclude>
-                    <exclude>**/*.java</exclude>
-                  </excludes>
-                </configuration>
-              </execution>
-            </executions>
-          </plugin>
-          <plugin>
-            <groupId>io.gatling</groupId>
-            <artifactId>gatling-maven-plugin</artifactId>
-            <version>4.3.0</version>
-            <executions>
-              <execution>
-                <phase>test</phase>
-                <goals>
-                  <goal>test</goal>
-                </goals>
-              </execution>
-            </executions>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
 
 </project>

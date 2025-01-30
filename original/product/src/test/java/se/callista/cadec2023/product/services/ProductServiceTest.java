@@ -17,7 +17,7 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 import se.callista.cadec2023.product.annotation.SpringBootDbIntegrationTest;
 import se.callista.cadec2023.product.domain.model.Product;
 import se.callista.cadec2023.product.persistence.PostgresqlTestContainer;
-import se.callista.workshop.karate.inventory.model.InventoryValue;
+import se.callista.cadec2023.inventory.model.InventoryValue;
 
 @Testcontainers
 @SpringBootDbIntegrationTest

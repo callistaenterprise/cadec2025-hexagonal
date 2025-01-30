@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import se.callista.cadec2023.product.domain.model.Product;
 import se.callista.cadec2023.product.domain.entity.ProductVariant;
 import se.callista.cadec2023.product.repository.ProductVariantRepository;
-import se.callista.workshop.karate.inventory.model.InventoryValue;
+import se.callista.cadec2023.inventory.model.InventoryValue;
 
 @RequiredArgsConstructor
 @Component
